@@ -1,6 +1,7 @@
 import os
 import sys
 from toast import toast
+from Constants import ToastConstants, CodeConstants
 
 class FileManager:
     def __init__(self):
@@ -10,63 +11,30 @@ class FileManager:
         try:
             os.makedirs(folder_name, exist_ok=True)
         except Exception as e:
-            toast(f"Error occurred while creating folder '{folder_name}': {e}", type='error')
+            toast(ToastConstants.Message.FOLDER_CREATING_ERROR.format(folder_name, e), type=ToastConstants.Type.ERROR)
 
     def create_file(self, file_path, content):
         try:
             with open(file_path, 'w') as file:
                 file.write(content)
         except Exception as e:
-            toast(f"Error occurred while creating file '{file_path}': {e}", type='error')
-
-    def create_component_file_content(self, file_basename):
-        return f'''import React from 'react';
-import {{ StyleSheet, Text, View }} from 'react-native';
-import use{file_basename.capitalize()} from './{file_basename}Container';
-
-export default function {file_basename}() {{
-  const {{}} = use{file_basename.capitalize()}();
-
-  return (
-    <View style={{styles.container}}>
-      <Text>{file_basename}</Text>
-    </View>
-  );
-}}
-
-const styles = StyleSheet.create({{ 
-  container: {{
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  }},
-}});
-'''
-
-    def create_container_file_content(self, file_basename):
-        return f'''import {{ StyleSheet, Text, View }} from 'react-native';
-import React from 'react';
-
-export default function use{file_basename.capitalize()}() {{
-  return {{}};
-}}
-'''
+            toast(ToastConstants.Message.FILE_CREATING_ERROR.format(file_path, e), type=ToastConstants.Type.ERROR)
 
     def create_files(self, file_names):
         if not file_names:
-            toast("No file names provided. Exiting.", type='info')
+            toast(ToastConstants.Message.FILE_NAME_NOT_PROVIDED, type=ToastConstants.Type.INFO)
             return
 
         for file_name in file_names:
             if ' ' in file_name:
-                toast(f"Skipping file '{file_name}' as it contains spaces.", type='info')
+                toast(ToastConstants.Message.FILE_NAME_SPACES_ERROR.format(file_name), type=ToastConstants.Type.INFO)
                 continue
 
             file_basename, _ = os.path.splitext(file_name)
             self.create_folder(file_basename)
 
-            component_content = self.create_component_file_content(file_basename)
-            container_content = self.create_container_file_content(file_basename)
+            component_content = CodeConstants.Structure.COMPONENT_FILE.format(file_basename, file_basename.capitalize())
+            container_content = CodeConstants.Structure.CONTAINER_FILE.format(file_basename.capitalize())
 
             for extension in self.file_extensions:
                 if(extension == 'Container.ts'):
@@ -77,7 +45,7 @@ export default function use{file_basename.capitalize()}() {{
                     content = ''       
                 self.create_file(os.path.join(file_basename, f'{file_basename if extension != 'types.ts' else ''}{extension}'), content)
 
-            toast(f"Files created for {file_basename}", type='success')
+            toast(ToastConstants.Message.FILE_CREATING_SUCCESS.format(file_basename), type=ToastConstants.Type.SUCCESS)
 
 if __name__ == "__main__":
     file_manager = FileManager()

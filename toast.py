@@ -7,7 +7,7 @@ class colors:
     END = '\033[0m'
 
 def toast(message, type='info'):
-    """Show a toast message."""
+    # Show a toast message
     if type == 'info':
         print('ℹ️ ' + colors.YELLOW + ' info ' + colors.END + message)
     elif type == 'success':

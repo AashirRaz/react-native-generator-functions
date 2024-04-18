@@ -1,17 +1,13 @@
 import subprocess
 from toast import toast
+from Constants import ToastConstants
 
-def install_packages(packages: list[str], dev=False):
-    """Install required packages."""
+def install_packages(packages: list[str], dev=False) -> bool:
+    # Install required packages
     try:
-
-        if dev:
-            subprocess.run(['yarn', 'add', '--dev', *packages], check=True)
-        else:
-            subprocess.run(['yarn', 'add', *packages], check=True)
-
-        toast(f"Packages installed successfully.", type='info')
+        subprocess.run(['yarn', 'add', '--dev', *packages], check=True) if dev else subprocess.run(['yarn', 'add', *packages], check=True)
+        toast(ToastConstants.Message.PACKAGES_INSTALLED, type=ToastConstants.Type.INFO)
         return True    
     except Exception as e:
-        toast(f"Error occurred while installing packages: {e}", type='error')
+        toast(ToastConstants.Message.PACKAGES_ERROR.format(e), type=ToastConstants.Type.ERROR)
         return False
