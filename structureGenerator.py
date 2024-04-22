@@ -1,7 +1,7 @@
 import os
 import sys
 from toast import toast
-from Constants import ToastConstants, CodeConstants
+from Constants import ToastConstants, CodeConstants, FileConstants
 
 class FileManager:
     def __init__(self):
@@ -47,7 +47,7 @@ class FileManager:
 
             toast(ToastConstants.Message.FILE_CREATING_SUCCESS.format(file_basename), type=ToastConstants.Type.SUCCESS)
 
-if __name__ == "__main__":
+def main():    
     file_manager = FileManager()
 
     # Check if file names are provided as command-line arguments
@@ -63,3 +63,7 @@ if __name__ == "__main__":
             file_names.append(file_name)
 
     file_manager.create_files(file_names)
+
+
+if __name__ == "__main__":
+    main()

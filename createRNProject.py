@@ -1,8 +1,8 @@
 import sys
 import time
 import shutil
-from installPackages import install_packages
-from setupRNPermissions import setup_rn_permissions, os, subprocess, toast
+from installPackages import install_packages, subprocess, toast
+from setupRNPermissions import setup_rn_permissions, os
 from Constants import PackageConstants, FileConstants, ToastConstants, CodeConstants
 from Generics import ReplaceFileContent
 
@@ -34,6 +34,7 @@ def create_react_native_project(project_name):
 
         directory = f'{os.getcwd()}/{project_name}'
 
+        # Change the current working directory to the newly created project directory
         os.chdir(directory)
 
         # Copy required files

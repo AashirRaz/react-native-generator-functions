@@ -1,18 +1,15 @@
 class PackageConstants:
     DEFAULT_PACKAGES = ['@hookform/resolvers','@react-native-community/netinfo','@react-navigation/drawer','@react-navigation/native','@react-navigation/native-stack','@tanstack/query-core','@tanstack/react-query','@tanstack/react-query-persist-client','apisauce','dayjs','react-hook-form','react-native-background-timer','react-native-confirmation-code-field','react-native-device-info','react-native-exception-handler','react-native-gesture-handler','react-native-keyboard-manager','react-native-mmkv','react-native-reanimated','react-native-safe-area-context','react-native-screens','react-native-size-matters', 'rn-animated-toast', 'yup' ,'zustand']
     DEFAULT_DEV_PACKAGES = ['@types/react-native-background-timer', 'babel-plugin-module-resolver']
-
 class FileConstants:
     REQUIRED_FILES = ['src', 'react-native.config.js', 'tsconfig.json' , 'babel.config.js']
+    REQUIRED_FOLDERS = ["android", "ios", "src"]
     BOILERPLATE_PATH = '/Users/aashirraza/Desktop/Tests/rnboilerplate'
-
-
 class ToastConstants:
     class Type:
         INFO = 'info'
         SUCCESS = 'success'
         ERROR = 'error'
-
     class Message:
         BOILERPLATE_INTEGRATED = "Boilerplate integrated successfully."
         ERROR_INTEGRATING_BOILERPLATE = "Error occurred while copying folder:{0}."
@@ -30,8 +27,6 @@ class ToastConstants:
         FILE_CREATING_SUCCESS = "Files created for {0}"
         OLDCONTENT_NOT_EQUALS_NEWCONTENT = "Length of oldContent and newContent should be same"
 
-
-
 class CodeConstants:
     class IndexJs:
         IMPORT_APP_OLD = "import App from './src';"
@@ -39,7 +34,6 @@ class CodeConstants:
 import {gestureHandlerRootHOC} from 'react-native-gesture-handler';'''
         APP_REGISTERY_NEW = "AppRegistry.registerComponent(appName, () => gestureHandlerRootHOC(App));"
         APP_REGISTERY_OLD = "AppRegistry.registerComponent(appName, () => App);"
-    
     class PackageJson:
         OLD_SCRIPT = '"test": "jest"'
         NEW_SCRIPT = '''"test": "jest",
@@ -48,7 +42,6 @@ import {gestureHandlerRootHOC} from 'react-native-gesture-handler';'''
     "build": "cd android && gradlew clean && gradlew assembleRelease && cd..",
     "releasebuild": "cd android && gradlew clean && gradlew bundleRelease && cd..",
     "open-apk": "open android/app/build/outputs/apk/release/"''',
-
     class PodFile:
         OLD_PODFILE = 'platform :ios, min_ios_version_supported'
         NEW_PODFILE = '''def rn_permissions_setup(script)
@@ -73,7 +66,6 @@ setup_permissions([
 ])
 
 platform :ios, min_ios_version_supported'''
-
     class Structure:
         COMPONENT_FILE = '''import React from 'react';
 import {{ StyleSheet, Text, View }} from 'react-native';
@@ -105,3 +97,30 @@ export default function use{0}() {{
   return {{}};
 }}
 '''
+    class FIREBASE:
+        BUILD_GRADLE_OLD = 'classpath("org.jetbrains.kotlin:kotlin-gradle-plugin")'
+        BUILD_GRADLE_NEW = '''classpath("org.jetbrains.kotlin:kotlin-gradle-plugin")
+        classpath 'com.google.gms:google-services:4.4.0'  // Firebase'''
+        ANDROID_BUILD_GRADLE_OLD = 'apply plugin: "com.facebook.react"'
+        ANDROID_BUILD_GRADLE_NEW = '''apply plugin: "com.facebook.react"
+apply plugin: 'com.google.gms.google-services' // Firebase'''
+        PODFILE_OLD = 'config = use_native_modules!'
+        PODFILE_NEW =  '''config = use_native_modules!
+
+  use_frameworks! :linkage => :static  # Firebase
+  $RNFirebaseAsStaticFramework = true  # Firebase'''
+        APPDELEGATE_OLD_IMPORT = '#import "AppDelegate.h"'
+        APPDELEGATE_NEW_IMPORT = '''#import "AppDelegate.h"
+#import <Firebase.h> // Firebase'''
+        APPDELEGATE_OLD_CONFIGURE = '''- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{'''
+        APPDELEGATE_NEW_CONFIGURE =  '''- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+  [FIRApp configure]; // Firebase
+'''
+        INDEX_JS_OLD = "import {name as appName} from './app.json';"
+        INDEX_JS_NEW = '''import {name as appName} from './app.json';
+import NotificationService from '@Service/notificationService';
+
+NotificationService.createNotificationListeners(); // Push Notifications
+NotificationService.requestUserPermission(); // Push Notifications'''
