@@ -84,7 +84,7 @@ source ~/.zshrc
 
 react-native-generator-functions is something we do in our spare time around our day job, friends, and other hobbies. That means support is "when we get to it". We recognize that sometimes this isn't good enough, especially if you have a production issue. To that end, We [offer paid support and bugfixes](syedaashirraza@gmail.com). A few basic rules before you contact me:
 
-- Changes made to Jarvis are open source.
+- Changes made to react-native-generator-functions are open source.
 - We reserve the right to make any changes we desire to the codebase.
 
 Please email me if paid support is something you require, and we can work out the details via email.
