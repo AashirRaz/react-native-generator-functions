@@ -63,6 +63,12 @@ Enter the following into your Terminal to save the changes
 source ~/.bash_profile
 ```
 
+or
+
+```zsh
+source ~/.zshrc
+```
+
 ## Contributing
 
 - [Submit a bug report or issue](mailto:syedaashirraza@gmail.com)
