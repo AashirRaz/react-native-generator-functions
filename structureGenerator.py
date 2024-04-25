@@ -30,11 +30,13 @@ class FileManager:
                 toast(ToastConstants.Message.FILE_NAME_SPACES_ERROR.format(file_name), type=ToastConstants.Type.INFO)
                 continue
 
+            file_basename:str = ''
             file_basename, _ = os.path.splitext(file_name)
+            capitalBaseName = file_basename[0].upper() + file_basename[1:]
             self.create_folder(file_basename)
 
-            component_content = CodeConstants.Structure.COMPONENT_FILE.format(file_basename, file_basename.capitalize())
-            container_content = CodeConstants.Structure.CONTAINER_FILE.format(file_basename.capitalize())
+            component_content = CodeConstants.Structure.COMPONENT_FILE.format(file_basename, capitalBaseName)
+            container_content = CodeConstants.Structure.CONTAINER_FILE.format(capitalBaseName)
 
             for extension in self.file_extensions:
                 if(extension == 'Container.ts'):
