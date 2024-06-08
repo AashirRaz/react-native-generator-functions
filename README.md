@@ -43,19 +43,19 @@ New-Item -Path $PROFILE -ItemType File -Force
 
 ```ps1
 Function Setup-Firebase {
-    Invoke-Expression "node `"{path to cloned-folder}/react-native-generator-functions/SetupFirebase.js`""
+    Invoke-Expression "node `"{path to cloned-folder}/react-native-generator-functions/src/SetupFirebase.js`""
 }
 
 Function Create-Project {
-    Invoke-Expression "node `"{path to cloned-folder}/react-native-generator-functions/CreateProject.js`""
+    Invoke-Expression "node `"{path to cloned-folder}/react-native-generator-functions/src/CreateProject.js`""
 }
 
 Function Setup-Permissions {
-    Invoke-Expression "node `"{path to cloned-folder}/react-native-generator-functions/SetupPermissions.js`""
+    Invoke-Expression "node `"{path to cloned-folder}/react-native-generator-functions/src/SetupPermissions.js`""
 }
 
 Function Create-Structure {
-    Invoke-Expression "node `"{path to cloned-folder}/react-native-generator-functions/FileManager.js`""
+    Invoke-Expression "node `"{path to cloned-folder}/react-native-generator-functions/src/FileManager.js`""
 }
 
 Set-Alias -Name setup-firebase -Value Setup-Firebase
@@ -85,19 +85,19 @@ nano ~/.bash_profile or ~/.zshrc
 - Enter this into your bash_profile
 
 ```zsh
-alias create-project="node {path to cloned-folder}/react-native-generator-functions/CreateProject.js";
+alias create-project="node {path to cloned-folder}/react-native-generator-functions/src/CreateProject.js";
 ```
 
 ```zsh
-alias setup-firebase="node {path to cloned-folder}/react-native-generator-functions/SetupFirebase.js";
+alias setup-firebase="node {path to cloned-folder}/react-native-generator-functions/src/SetupFirebase.js";
 ```
 
 ```zsh
-alias setup-permissions="node {path to cloned-folder}/react-native-generator-functions/SetupPermissions.js";
+alias setup-permissions="node {path to cloned-folder}/react-native-generator-functions/src/SetupPermissions.js";
 ```
 
 ```zsh
-alias create-structure="node {path to cloned-folder}/react-native-generator-functions/FileManager.js";
+alias create-structure="node {path to cloned-folder}/react-native-generator-functions/src/FileManager.js";
 ```
 
 - Save changes to your file and exit the text editor
