@@ -2,7 +2,7 @@ import fs from "fs";
 import { fileURLToPath } from "url";
 import {
   FileConstants,
-  PersmissionConstants,
+  PermissionConstants,
   ToastMessages,
   ToastTypes,
 } from "./Constants.js";
@@ -26,13 +26,13 @@ export async function SetupPermissions(
     // Replace the content of the Podfile
     await replaceFileContent(
       `${directory}/ios/Podfile`,
-      [PersmissionConstants.OLD_PODFILE],
-      [PersmissionConstants.NEW_PODFILE],
+      [PermissionConstants.OLD_PODFILE],
+      [PermissionConstants.NEW_PODFILE],
       prefixText
     );
 
     copyFile(
-      "/Users/aashirraza/Desktop/Tests/generator-functions/src/permissionService.ts",
+      "/Users/aashirraza/Desktop/Tests/react-native-generator-functions/src/permissionService.ts",
       `${directory}/src/services/permissionService.ts`
     );
 

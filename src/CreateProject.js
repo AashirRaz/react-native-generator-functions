@@ -10,9 +10,9 @@ import {
   ToastMessages,
   ToastTypes,
 } from "./Constants.js";
-import { SetupPermissions } from "./setupPermissions.js";
 import ora from "ora";
 import pkg from "enquirer";
+import { SetupPermissions } from "./SetupPermissions.js";
 const { Input } = pkg;
 
 async function copyDirectory(source, destination) {
@@ -85,11 +85,11 @@ const createReactNativeProject = async (projectDirectory, projectName) => {
       path.join(projectDirectory, "index.js"),
       [
         ProjectInitConstants.IMPORT_APP_OLD,
-        ProjectInitConstants.APP_REGISTERY_OLD,
+        ProjectInitConstants.APP_REGISTRY_OLD,
       ],
       [
         ProjectInitConstants.IMPORT_APP_NEW,
-        ProjectInitConstants.APP_REGISTERY_NEW,
+        ProjectInitConstants.APP_REGISTRY_NEW,
       ],
       "[2/8]"
     );
@@ -133,7 +133,7 @@ const createReactNativeProject = async (projectDirectory, projectName) => {
     // Open project in VSCode
     execSync("code .", { stdio: "inherit" });
 
-    Toast(ToastMessages.PROJECT_BUILD_SUCCESSFULL, ToastTypes.SUCCESS);
+    Toast(ToastMessages.PROJECT_BUILD_SUCCESSFUL, ToastTypes.SUCCESS);
   } catch (error) {
     Toast(ToastMessages.PROJECT_BUILD_ERROR.format(error), ToastTypes.ERROR);
   }

@@ -76,7 +76,7 @@ export const ToastMessages = {
   BOILERPLATE_INIT_ERROR: "Error integrating boilerplate: {0}",
   ALREADY_PROJECT_INIT:
     "Already in a React Native project directory. Skipping project creation.",
-  PROJECT_BUILD_SUCCESSFULL: "React Native project created successfully.",
+  PROJECT_BUILD_SUCCESSFUL: "React Native project created successfully.",
   PROJECT_BUILD_ERROR: "Error creating React Native project: {0}",
 };
 
@@ -135,7 +135,7 @@ export const FileConstants = {
     "/Users/aashirraza/Desktop/Tests/generator-functions/src/notificationService.ts",
 };
 
-export const PersmissionConstants = {
+export const PermissionConstants = {
   OLD_PODFILE: `platform :ios, min_ios_version_supported`,
   NEW_PODFILE: `def rn_permissions_setup(script)
 # Resolve script with node to allow for hoisting
@@ -194,8 +194,8 @@ export const ProjectInitConstants = {
   IMPORT_APP_OLD: "import App from './src';",
   IMPORT_APP_NEW: `import App from './src';
   import {gestureHandlerRootHOC} from 'react-native-gesture-handler';`,
-  APP_REGISTERY_OLD: "AppRegistry.registerComponent(appName, () => App);",
-  APP_REGISTERY_NEW:
+  APP_REGISTRY_OLD: "AppRegistry.registerComponent(appName, () => App);",
+  APP_REGISTRY_NEW:
     "AppRegistry.registerComponent(appName, () => gestureHandlerRootHOC(App));",
   OLD_SCRIPT: '"test": "jest"',
   NEW_SCRIPT: `"test": "jest",
