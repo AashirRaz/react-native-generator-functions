@@ -1,3 +1,20 @@
+/**
+ *  This script generates frontend API files (RequestTypes.ts, ResponseTypes.ts, ApiUrls.ts) by fetching data from the backend API.
+ * The script is designed to be run from the root directory of a React project.
+ * It reads the base URL from the `Api.ts` file and uses it to fetch data from the backend API.
+ * The fetched data is then written to the respective frontend files.
+ * The script also formats the generated files using Prettier.
+ * To run the script, use the command: `node src/generateFrontendApiFiles.js`
+ * or
+ * Add a script in your /.zshrc or /.bashrc file like this:
+ * alias generate-frontend-api-files="node /Users/syedaashirraza/Desktop/Personal/react-native-generator-functions/src/GenerateFrontendApiFiles.js"
+ * and then run the command `generate-frontend-api-files`
+ *
+ * On Windows, you can add an alias in your PowerShell profile like this:
+ * function generate-frontend-api-files { node C:\path\to\GenerateFrontendApiFiles.js }
+ * and then run the command `generate-frontend-api-files`
+ */
+
 import axios from "axios";
 import fs from "fs";
 import path from "path";
